@@ -12,10 +12,23 @@ public class RecursiveMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
+		 
+		if (n == 1) {
+			
+			
+			return 0.5;
+		}
 		
-			// FIXME compute the geometric sum for the first n terms recursively
-			return 0;
+		else if (n==0) {
+		return 0.0;
+		}
 		
+		else {
+			double sum;
+			sum = geometricSum(n-1) + 1/(Math.pow(2, n));
+			return sum;
+			
+		}
 	}
 	
 	/**
@@ -31,6 +44,36 @@ public class RecursiveMethods {
 			double radiusMinimumDrawingThreshold) {
 		
 		// FIXME
+		double bound = 5.0;
+		StdDraw.setXscale(-bound, bound);
+		StdDraw.setYscale(-bound, bound);		
+		
+		if (radius<=radiusMinimumDrawingThreshold) {
+			
+
+			
+			return;
+		}
+		
+		
+		else {
+			
+			StdDraw.circle(xCenter, yCenter, radius);
+		if(radius/3.0 >= radiusMinimumDrawingThreshold) {				
+			StdDraw.circle(xCenter+radius, yCenter, radius/3);
+			StdDraw.circle(xCenter-radius, yCenter, radius/3);
+			StdDraw.circle(xCenter, yCenter+radius, radius/3);
+			StdDraw.circle(xCenter, yCenter-radius, radius/3);
+		}
+			circlesUponCircles(xCenter+radius,yCenter,radius/3.0,radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter-radius,yCenter,radius/3.0,radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter,yCenter+radius,radius/3.0,radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter,yCenter-radius,radius/3.0,radiusMinimumDrawingThreshold);
+
+			
+		}
+		
+		
 	}
 
 	/**
